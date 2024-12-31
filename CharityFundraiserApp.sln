@@ -1,0 +1,10 @@
+﻿Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityFundRaiserApp.Api", "CharityFundRaiserApp.Api\CharityFundRaiserApp.Api.csproj", "{A1D44D97-82EC-43E1-B449-C6C6406ECF32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityFundRaiserApp.Api", "CharityFundRaiserApp.Api\CharityFundRaiserApp.Api.csproj", "{2D693158-9AF5-4C9E-AFA1-21C757F39050}"
+EndProject
+Global
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	EndGlobalSection
+EndGlobal

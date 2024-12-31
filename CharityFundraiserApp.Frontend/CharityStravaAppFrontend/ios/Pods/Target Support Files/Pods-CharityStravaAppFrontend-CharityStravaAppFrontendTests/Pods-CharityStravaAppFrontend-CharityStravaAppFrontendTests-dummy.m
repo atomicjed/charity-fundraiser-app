@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_CharityStravaAppFrontend_CharityStravaAppFrontendTests : NSObject
+@end
+@implementation PodsDummy_Pods_CharityStravaAppFrontend_CharityStravaAppFrontendTests
+@end
