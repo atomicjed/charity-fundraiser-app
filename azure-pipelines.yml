@@ -1,0 +1,57 @@
+# Node.js with React
+# Build a Node.js project that uses React.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- main
+
+pool:
+  vmImage: 'macos-latest'
+
+jobs:
+  - job: Build
+    displayName: Build React Native App
+    steps:
+    
+    # Checkout Code
+    - checkout: self
+
+    # Install Node.js
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '20.x'
+      displayName: 'Install Node.js'
+
+    # Install dependencies
+    - script: |
+        npm install  # Or use yarn if you're using it
+      displayName: 'Install Node.js dependencies'
+
+    # Install CocoaPods for iOS
+    - script: |
+        cd ios && pod install  # iOS dependencies
+      displayName: 'Install CocoaPods'
+
+    # Build Android APK
+    - script: |
+        cd android && ./gradlew assembleRelease  # Builds APK for Android
+      displayName: 'Build Android APK'
+
+    # Build iOS IPA
+    - script: |
+        cd ios && xcodebuild -scheme YourApp -configuration Release -archivePath build/YourApp.xcarchive archive
+      displayName: 'Build iOS IPA'
+
+    # Publish build artifacts (APK & IPA)
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)/android/app/build/outputs/apk/release'
+        ArtifactName: 'AndroidApp'
+        publishLocation: 'Container'
+      
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)/ios/build/YourApp.xcarchive'
+        ArtifactName: 'iOSApp'
+        publishLocation: 'Container'
