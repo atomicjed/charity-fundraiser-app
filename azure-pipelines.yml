@@ -36,7 +36,7 @@ jobs:
     
     # Build iOS IPA
     - script: |
-        cd CharityFundraiserApp.Frontend/CharityStravaAppFrontend/ios && xcodebuild -scheme CharityStravaAppFrontend -configuration Release -archivePath build/CharityStravaAppFrontend.xcarchive -destination 'generic/platform=iOS' archive
+        cd CharityFundraiserApp.Frontend/CharityStravaAppFrontend/ios && xcodebuild -scheme CharityStravaAppFrontend -configuration Release -archivePath build/CharityStravaAppFrontend.xcarchive archive -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY="Apple Development"
       displayName: 'Build iOS IPA'
 
     # Build Android APK
