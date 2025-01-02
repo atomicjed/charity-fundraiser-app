@@ -25,18 +25,18 @@ jobs:
 
     # Install dependencies
     - script: |
-        cd CharityFundraiserApp.Frontend/CharityFundraiserAppFrontend
+        cd CharityFundraiserApp.Frontend/CharityStravaAppFrontend
         npm install  # Or use yarn if you're using it
       displayName: 'Install Node.js dependencies'
 
     # Install CocoaPods for iOS
     - script: |
-        cd CharityFundraiserApp.Frontend/CharityFundraiserAppFrontend/ios && pod install
+        cd CharityFundraiserApp.Frontend/CharityStravaAppFrontend/ios && pod install
       displayName: 'Install CocoaPods'
 
     # Build Android APK
     - script: |
-        cd CharityFundraiserApp.Frontend/CharityFundraiserAppFrontend/android && ./gradlew assembleRelease
+        cd CharityFundraiserApp.Frontend/CharityStravaAppFrontend/android && ./gradlew assembleRelease
       displayName: 'Build Android APK'
 
     # Build iOS IPA
