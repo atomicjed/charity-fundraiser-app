@@ -25,17 +25,18 @@ jobs:
 
     # Install dependencies
     - script: |
+        cd CharityFundraiserApp.Frontend/CharityFundraiserAppFrontend
         npm install  # Or use yarn if you're using it
       displayName: 'Install Node.js dependencies'
 
     # Install CocoaPods for iOS
     - script: |
-        cd ios && pod install  # iOS dependencies
+        cd CharityFundraiserApp.Frontend/CharityFundraiserAppFrontend/ios && pod install
       displayName: 'Install CocoaPods'
 
     # Build Android APK
     - script: |
-        cd android && ./gradlew assembleRelease  # Builds APK for Android
+        cd CharityFundraiserApp.Frontend/CharityFundraiserAppFrontend/android && ./gradlew assembleRelease
       displayName: 'Build Android APK'
 
     # Build iOS IPA
