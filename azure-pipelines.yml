@@ -53,6 +53,28 @@ jobs:
       
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.SourcesDirectory)/ios/build/YourApp.xcarchive'
+        PathtoPublish: '$(Build.SourcesDirectory)/ios/build/CharityStravaAppFrontend.xcarchive'
         ArtifactName: 'iOSApp'
         publishLocation: 'Container'
+
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '8.x'
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+      displayName: 'Install .NET SDK'
+
+    - script: |
+        cd CharityFundraiserApp.WebAPI
+        dotnet restore
+      displayName: 'Restore C# Web API dependencies'
+
+    - script: |
+        cd CharityFundraiserApp.WebAPI
+        dotnet build
+      displayName: 'Build C# Web API'
+
+    - script: |
+        cd CharityFundraiserApp.WebAPI
+        dotnet test
+      displayName: 'Test C# Web API'
