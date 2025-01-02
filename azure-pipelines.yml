@@ -41,7 +41,7 @@ jobs:
 
     # Build iOS IPA
     - script: |
-        cd ios && xcodebuild -scheme YourApp -configuration Release -archivePath build/YourApp.xcarchive archive
+        cd CharityFundraiserApp.Frontend/CharityStravaAppFrontend/ios && xcodebuild -scheme CharityStravaAppFrontend -configuration Release -archivePath build/YourApp.xcarchive archive
       displayName: 'Build iOS IPA'
 
     # Publish build artifacts (APK & IPA)
