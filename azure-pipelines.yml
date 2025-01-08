@@ -1,0 +1,80 @@
+# Node.js with React
+# Build a Node.js project that uses React.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- main
+
+pool:
+  vmImage: 'macos-latest'
+
+jobs:
+  - job: Build
+    displayName: Build React Native App
+    steps:
+    
+    # Checkout Code
+    - checkout: self
+
+    # Install Node.js
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '20.x'
+      displayName: 'Install Node.js'
+
+    # Install dependencies
+    - script: |
+        cd CharityFundraiserApp.Frontend/CharityStravaAppFrontend
+        npm install
+      displayName: 'Install Node.js dependencies'
+
+    # Install CocoaPods for iOS
+    - script: |
+        cd CharityFundraiserApp.Frontend/CharityStravaAppFrontend/ios && pod install
+      displayName: 'Install CocoaPods'
+    
+    # Build iOS IPA
+    - script: |
+        cd CharityFundraiserApp.Frontend/CharityStravaAppFrontend/ios && xcodebuild -scheme CharityStravaAppFrontend -configuration Release -archivePath build/CharityStravaAppFrontend.xcarchive archive -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY="Apple Development"
+      displayName: 'Build iOS IPA'
+
+    # Build Android APK
+    - script: |
+        cd CharityFundraiserApp.Frontend/CharityStravaAppFrontend/android && ./gradlew assembleRelease
+      displayName: 'Build Android APK'
+
+    # Publish build artifacts (APK & IPA)
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)/android/app/build/outputs/apk/release'
+        ArtifactName: 'AndroidApp'
+        publishLocation: 'Container'
+      
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)/ios/build/CharityStravaAppFrontend.xcarchive'
+        ArtifactName: 'iOSApp'
+        publishLocation: 'Container'
+
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '8.x'
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+      displayName: 'Install .NET SDK'
+
+    - script: |
+        cd CharityFundraiserApp.WebAPI
+        dotnet restore
+      displayName: 'Restore C# Web API dependencies'
+
+    - script: |
+        cd CharityFundraiserApp.WebAPI
+        dotnet build
+      displayName: 'Build C# Web API'
+
+    - script: |
+        cd CharityFundraiserApp.WebAPI
+        dotnet test
+      displayName: 'Test C# Web API'
