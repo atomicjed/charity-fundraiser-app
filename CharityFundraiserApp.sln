@@ -1,10 +1,38 @@
-﻿Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityFundRaiserApp.Api", "CharityFundRaiserApp.Api\CharityFundRaiserApp.Api.csproj", "{A1D44D97-82EC-43E1-B449-C6C6406ECF32}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityFundRaiserApp.Api", "CharityFundRaiserApp.Api\CharityFundRaiserApp.Api.csproj", "{F8A1F042-3B3C-4A45-B072-25ED462C6950}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityFundRaiserApp.Api", "CharityFundRaiserApp.Api\CharityFundRaiserApp.Api.csproj", "{2D693158-9AF5-4C9E-AFA1-21C757F39050}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CharityFundraiserApp.Common", "CharityFundraiserApp.Common", "{DC31445B-6FB9-4448-882C-8A0B23BE8C41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CharityFundraiserApp.Common", "CharityFundraiserApp.Common", "{DB0B746D-BFF7-4254-B933-C08954DFE3B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityFundraiserApp.Common", "CharityFundraiserApp.Common\CharityFundraiserApp.Common.csproj", "{6E4943E1-9832-4397-A04B-8509A55147AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityFundraiserApp.ApplicationDatabase", "CharityFundraiserApp.ApplicationDatabase\CharityFundraiserApp.ApplicationDatabase.csproj", "{7555B29A-56B4-4C55-8A37-E93F95E74032}"
 EndProject
 Global
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8A1F042-3B3C-4A45-B072-25ED462C6950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A1F042-3B3C-4A45-B072-25ED462C6950}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A1F042-3B3C-4A45-B072-25ED462C6950}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A1F042-3B3C-4A45-B072-25ED462C6950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E4943E1-9832-4397-A04B-8509A55147AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E4943E1-9832-4397-A04B-8509A55147AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E4943E1-9832-4397-A04B-8509A55147AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E4943E1-9832-4397-A04B-8509A55147AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7555B29A-56B4-4C55-8A37-E93F95E74032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7555B29A-56B4-4C55-8A37-E93F95E74032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7555B29A-56B4-4C55-8A37-E93F95E74032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7555B29A-56B4-4C55-8A37-E93F95E74032}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
